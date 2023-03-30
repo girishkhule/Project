@@ -1,0 +1,87 @@
+# Define the Interface root
+Interface:
+
+<Interface>:
+  # Set the banner attributes
+   MDBanner:
+      id: banner
+      text: ["Already Running......"]
+      over_widget: toolbar # Take the id from MDToolbar
+      vertical_padding: toolbar.height
+      right_action: ["CLOSE", lambda x: root.closing()]
+    # specify the values for toolbar
+   MDToolbar:
+      id: toolbar
+      title:"Text to Speech Converter"
+      anchor_title:"center"
+      pos_hint:{"top": 1}
+      md_bg_color: app.theme_cls.primary_color
+    # Design the field for dialog box and set the limitation for entries
+   MDTextField:
+      id: input_text
+      hint_text:"Text Here"
+      mode:"fill"
+      # Put a limitation to text box
+      pos_hint:{"center_x":.5}
+      pos: 1,"480dp"
+      multiline: True
+      size_hint:None,None
+      width: "400dp"
+      max_height:"150dp"
+   # Create the checkboxes for widgets
+   MDBoxLayout:
+      pos_hint:{"center_x": .5}
+      pos: 1,"435dp"
+      adaptive_size: True
+      MDBoxLayout:
+         adaptive_size: True
+         MDCheckbox:
+            id: female
+            group:"selection"
+            size_hint: None,None
+            size: "24dp","24dp"
+            active: True
+         MDLabel:
+            text:"Female"
+            size_hint: None,None
+            size: "100dp","24dp"
+      MDBoxLayout:
+         adaptive_size: True
+         MDCheckbox:
+            id: male
+            group:"selection"
+            size_hint: None,None
+            size: "24dp","24dp"
+            active: False
+         MDLabel:
+            text:"Male"
+            size_hint: None,None
+            size: "100dp","24dp"
+   # Display icons for play & pause
+   Click_Icon:
+      id:icon_button
+      icon:"play.png"
+      size_hint:None,None
+      size: "200dp","200dp"
+      pos_hint:{"center_x":.5}
+      pos: 1,"150dp"
+      on_press:root.changing()
+
+   MDFloatingActionButton:
+      icon:"export"
+      md_bg_color:app.theme_cls.primary_color
+      pos_hint:{"right": .95}
+      pos:1, "20dp"
+      on_press: root.exporting_menu()
+
+# set another dialog content
+<Dialog_Content>:
+   orientation:"vertical"
+   size_hint_y: None
+   height: "40dp"
+   MDTextField:
+      hint_text: "Filename Here"
+      mode:"rectangle"
+      helper_text:"Please DO NOT enter the name with extension"
+      helper_text_mode:  "on_focus"
+
