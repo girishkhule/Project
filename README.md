@@ -1,9 +1,3 @@
-Imported the required libraries for Text to speech.
-
-•	pyttsx3 kivymd version 0.104.2 plyer
-
-•	Please note that kivymd version 0.104.2 is required for Interface functionalities.
-
 
 ----------
 
